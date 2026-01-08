@@ -1,0 +1,1316 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "../internal/prismaNamespace.js";
+/**
+ * Model Defective
+ *
+ */
+export type DefectiveModel = runtime.Types.Result.DefaultSelection<Prisma.$DefectivePayload>;
+export type AggregateDefective = {
+    _count: DefectiveCountAggregateOutputType | null;
+    _avg: DefectiveAvgAggregateOutputType | null;
+    _sum: DefectiveSumAggregateOutputType | null;
+    _min: DefectiveMinAggregateOutputType | null;
+    _max: DefectiveMaxAggregateOutputType | null;
+};
+export type DefectiveAvgAggregateOutputType = {
+    id: number | null;
+    categoryId: number | null;
+};
+export type DefectiveSumAggregateOutputType = {
+    id: number | null;
+    categoryId: number | null;
+};
+export type DefectiveMinAggregateOutputType = {
+    id: number | null;
+    itemName: string | null;
+    serialNumber: string | null;
+    location: string | null;
+    issueDescription: string | null;
+    categoryId: number | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type DefectiveMaxAggregateOutputType = {
+    id: number | null;
+    itemName: string | null;
+    serialNumber: string | null;
+    location: string | null;
+    issueDescription: string | null;
+    categoryId: number | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type DefectiveCountAggregateOutputType = {
+    id: number;
+    itemName: number;
+    serialNumber: number;
+    location: number;
+    issueDescription: number;
+    categoryId: number;
+    createdAt: number;
+    updatedAt: number;
+    _all: number;
+};
+export type DefectiveAvgAggregateInputType = {
+    id?: true;
+    categoryId?: true;
+};
+export type DefectiveSumAggregateInputType = {
+    id?: true;
+    categoryId?: true;
+};
+export type DefectiveMinAggregateInputType = {
+    id?: true;
+    itemName?: true;
+    serialNumber?: true;
+    location?: true;
+    issueDescription?: true;
+    categoryId?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type DefectiveMaxAggregateInputType = {
+    id?: true;
+    itemName?: true;
+    serialNumber?: true;
+    location?: true;
+    issueDescription?: true;
+    categoryId?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type DefectiveCountAggregateInputType = {
+    id?: true;
+    itemName?: true;
+    serialNumber?: true;
+    location?: true;
+    issueDescription?: true;
+    categoryId?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    _all?: true;
+};
+export type DefectiveAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which Defective to aggregate.
+     */
+    where?: Prisma.DefectiveWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Defectives to fetch.
+     */
+    orderBy?: Prisma.DefectiveOrderByWithRelationInput | Prisma.DefectiveOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.DefectiveWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Defectives from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Defectives.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned Defectives
+    **/
+    _count?: true | DefectiveCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+    **/
+    _avg?: DefectiveAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+    **/
+    _sum?: DefectiveSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: DefectiveMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: DefectiveMaxAggregateInputType;
+};
+export type GetDefectiveAggregateType<T extends DefectiveAggregateArgs> = {
+    [P in keyof T & keyof AggregateDefective]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateDefective[P]> : Prisma.GetScalarType<T[P], AggregateDefective[P]>;
+};
+export type DefectiveGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.DefectiveWhereInput;
+    orderBy?: Prisma.DefectiveOrderByWithAggregationInput | Prisma.DefectiveOrderByWithAggregationInput[];
+    by: Prisma.DefectiveScalarFieldEnum[] | Prisma.DefectiveScalarFieldEnum;
+    having?: Prisma.DefectiveScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: DefectiveCountAggregateInputType | true;
+    _avg?: DefectiveAvgAggregateInputType;
+    _sum?: DefectiveSumAggregateInputType;
+    _min?: DefectiveMinAggregateInputType;
+    _max?: DefectiveMaxAggregateInputType;
+};
+export type DefectiveGroupByOutputType = {
+    id: number;
+    itemName: string;
+    serialNumber: string;
+    location: string;
+    issueDescription: string | null;
+    categoryId: number;
+    createdAt: Date;
+    updatedAt: Date;
+    _count: DefectiveCountAggregateOutputType | null;
+    _avg: DefectiveAvgAggregateOutputType | null;
+    _sum: DefectiveSumAggregateOutputType | null;
+    _min: DefectiveMinAggregateOutputType | null;
+    _max: DefectiveMaxAggregateOutputType | null;
+};
+type GetDefectiveGroupByPayload<T extends DefectiveGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<DefectiveGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof DefectiveGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], DefectiveGroupByOutputType[P]> : Prisma.GetScalarType<T[P], DefectiveGroupByOutputType[P]>;
+}>>;
+export type DefectiveWhereInput = {
+    AND?: Prisma.DefectiveWhereInput | Prisma.DefectiveWhereInput[];
+    OR?: Prisma.DefectiveWhereInput[];
+    NOT?: Prisma.DefectiveWhereInput | Prisma.DefectiveWhereInput[];
+    id?: Prisma.IntFilter<"Defective"> | number;
+    itemName?: Prisma.StringFilter<"Defective"> | string;
+    serialNumber?: Prisma.StringFilter<"Defective"> | string;
+    location?: Prisma.StringFilter<"Defective"> | string;
+    issueDescription?: Prisma.StringNullableFilter<"Defective"> | string | null;
+    categoryId?: Prisma.IntFilter<"Defective"> | number;
+    createdAt?: Prisma.DateTimeFilter<"Defective"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"Defective"> | Date | string;
+    category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>;
+};
+export type DefectiveOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    itemName?: Prisma.SortOrder;
+    serialNumber?: Prisma.SortOrder;
+    location?: Prisma.SortOrder;
+    issueDescription?: Prisma.SortOrderInput | Prisma.SortOrder;
+    categoryId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    category?: Prisma.CategoryOrderByWithRelationInput;
+};
+export type DefectiveWhereUniqueInput = Prisma.AtLeast<{
+    id?: number;
+    AND?: Prisma.DefectiveWhereInput | Prisma.DefectiveWhereInput[];
+    OR?: Prisma.DefectiveWhereInput[];
+    NOT?: Prisma.DefectiveWhereInput | Prisma.DefectiveWhereInput[];
+    itemName?: Prisma.StringFilter<"Defective"> | string;
+    serialNumber?: Prisma.StringFilter<"Defective"> | string;
+    location?: Prisma.StringFilter<"Defective"> | string;
+    issueDescription?: Prisma.StringNullableFilter<"Defective"> | string | null;
+    categoryId?: Prisma.IntFilter<"Defective"> | number;
+    createdAt?: Prisma.DateTimeFilter<"Defective"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"Defective"> | Date | string;
+    category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>;
+}, "id">;
+export type DefectiveOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    itemName?: Prisma.SortOrder;
+    serialNumber?: Prisma.SortOrder;
+    location?: Prisma.SortOrder;
+    issueDescription?: Prisma.SortOrderInput | Prisma.SortOrder;
+    categoryId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    _count?: Prisma.DefectiveCountOrderByAggregateInput;
+    _avg?: Prisma.DefectiveAvgOrderByAggregateInput;
+    _max?: Prisma.DefectiveMaxOrderByAggregateInput;
+    _min?: Prisma.DefectiveMinOrderByAggregateInput;
+    _sum?: Prisma.DefectiveSumOrderByAggregateInput;
+};
+export type DefectiveScalarWhereWithAggregatesInput = {
+    AND?: Prisma.DefectiveScalarWhereWithAggregatesInput | Prisma.DefectiveScalarWhereWithAggregatesInput[];
+    OR?: Prisma.DefectiveScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.DefectiveScalarWhereWithAggregatesInput | Prisma.DefectiveScalarWhereWithAggregatesInput[];
+    id?: Prisma.IntWithAggregatesFilter<"Defective"> | number;
+    itemName?: Prisma.StringWithAggregatesFilter<"Defective"> | string;
+    serialNumber?: Prisma.StringWithAggregatesFilter<"Defective"> | string;
+    location?: Prisma.StringWithAggregatesFilter<"Defective"> | string;
+    issueDescription?: Prisma.StringNullableWithAggregatesFilter<"Defective"> | string | null;
+    categoryId?: Prisma.IntWithAggregatesFilter<"Defective"> | number;
+    createdAt?: Prisma.DateTimeWithAggregatesFilter<"Defective"> | Date | string;
+    updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Defective"> | Date | string;
+};
+export type DefectiveCreateInput = {
+    itemName: string;
+    serialNumber: string;
+    location: string;
+    issueDescription?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    category: Prisma.CategoryCreateNestedOneWithoutDefectivesInput;
+};
+export type DefectiveUncheckedCreateInput = {
+    id?: number;
+    itemName: string;
+    serialNumber: string;
+    location: string;
+    issueDescription?: string | null;
+    categoryId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type DefectiveUpdateInput = {
+    itemName?: Prisma.StringFieldUpdateOperationsInput | string;
+    serialNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    location?: Prisma.StringFieldUpdateOperationsInput | string;
+    issueDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    category?: Prisma.CategoryUpdateOneRequiredWithoutDefectivesNestedInput;
+};
+export type DefectiveUncheckedUpdateInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    itemName?: Prisma.StringFieldUpdateOperationsInput | string;
+    serialNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    location?: Prisma.StringFieldUpdateOperationsInput | string;
+    issueDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    categoryId?: Prisma.IntFieldUpdateOperationsInput | number;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DefectiveCreateManyInput = {
+    id?: number;
+    itemName: string;
+    serialNumber: string;
+    location: string;
+    issueDescription?: string | null;
+    categoryId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type DefectiveUpdateManyMutationInput = {
+    itemName?: Prisma.StringFieldUpdateOperationsInput | string;
+    serialNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    location?: Prisma.StringFieldUpdateOperationsInput | string;
+    issueDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DefectiveUncheckedUpdateManyInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    itemName?: Prisma.StringFieldUpdateOperationsInput | string;
+    serialNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    location?: Prisma.StringFieldUpdateOperationsInput | string;
+    issueDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    categoryId?: Prisma.IntFieldUpdateOperationsInput | number;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DefectiveListRelationFilter = {
+    every?: Prisma.DefectiveWhereInput;
+    some?: Prisma.DefectiveWhereInput;
+    none?: Prisma.DefectiveWhereInput;
+};
+export type DefectiveOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type DefectiveCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    itemName?: Prisma.SortOrder;
+    serialNumber?: Prisma.SortOrder;
+    location?: Prisma.SortOrder;
+    issueDescription?: Prisma.SortOrder;
+    categoryId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type DefectiveAvgOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    categoryId?: Prisma.SortOrder;
+};
+export type DefectiveMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    itemName?: Prisma.SortOrder;
+    serialNumber?: Prisma.SortOrder;
+    location?: Prisma.SortOrder;
+    issueDescription?: Prisma.SortOrder;
+    categoryId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type DefectiveMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    itemName?: Prisma.SortOrder;
+    serialNumber?: Prisma.SortOrder;
+    location?: Prisma.SortOrder;
+    issueDescription?: Prisma.SortOrder;
+    categoryId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type DefectiveSumOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    categoryId?: Prisma.SortOrder;
+};
+export type DefectiveCreateNestedManyWithoutCategoryInput = {
+    create?: Prisma.XOR<Prisma.DefectiveCreateWithoutCategoryInput, Prisma.DefectiveUncheckedCreateWithoutCategoryInput> | Prisma.DefectiveCreateWithoutCategoryInput[] | Prisma.DefectiveUncheckedCreateWithoutCategoryInput[];
+    connectOrCreate?: Prisma.DefectiveCreateOrConnectWithoutCategoryInput | Prisma.DefectiveCreateOrConnectWithoutCategoryInput[];
+    createMany?: Prisma.DefectiveCreateManyCategoryInputEnvelope;
+    connect?: Prisma.DefectiveWhereUniqueInput | Prisma.DefectiveWhereUniqueInput[];
+};
+export type DefectiveUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: Prisma.XOR<Prisma.DefectiveCreateWithoutCategoryInput, Prisma.DefectiveUncheckedCreateWithoutCategoryInput> | Prisma.DefectiveCreateWithoutCategoryInput[] | Prisma.DefectiveUncheckedCreateWithoutCategoryInput[];
+    connectOrCreate?: Prisma.DefectiveCreateOrConnectWithoutCategoryInput | Prisma.DefectiveCreateOrConnectWithoutCategoryInput[];
+    createMany?: Prisma.DefectiveCreateManyCategoryInputEnvelope;
+    connect?: Prisma.DefectiveWhereUniqueInput | Prisma.DefectiveWhereUniqueInput[];
+};
+export type DefectiveUpdateManyWithoutCategoryNestedInput = {
+    create?: Prisma.XOR<Prisma.DefectiveCreateWithoutCategoryInput, Prisma.DefectiveUncheckedCreateWithoutCategoryInput> | Prisma.DefectiveCreateWithoutCategoryInput[] | Prisma.DefectiveUncheckedCreateWithoutCategoryInput[];
+    connectOrCreate?: Prisma.DefectiveCreateOrConnectWithoutCategoryInput | Prisma.DefectiveCreateOrConnectWithoutCategoryInput[];
+    upsert?: Prisma.DefectiveUpsertWithWhereUniqueWithoutCategoryInput | Prisma.DefectiveUpsertWithWhereUniqueWithoutCategoryInput[];
+    createMany?: Prisma.DefectiveCreateManyCategoryInputEnvelope;
+    set?: Prisma.DefectiveWhereUniqueInput | Prisma.DefectiveWhereUniqueInput[];
+    disconnect?: Prisma.DefectiveWhereUniqueInput | Prisma.DefectiveWhereUniqueInput[];
+    delete?: Prisma.DefectiveWhereUniqueInput | Prisma.DefectiveWhereUniqueInput[];
+    connect?: Prisma.DefectiveWhereUniqueInput | Prisma.DefectiveWhereUniqueInput[];
+    update?: Prisma.DefectiveUpdateWithWhereUniqueWithoutCategoryInput | Prisma.DefectiveUpdateWithWhereUniqueWithoutCategoryInput[];
+    updateMany?: Prisma.DefectiveUpdateManyWithWhereWithoutCategoryInput | Prisma.DefectiveUpdateManyWithWhereWithoutCategoryInput[];
+    deleteMany?: Prisma.DefectiveScalarWhereInput | Prisma.DefectiveScalarWhereInput[];
+};
+export type DefectiveUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: Prisma.XOR<Prisma.DefectiveCreateWithoutCategoryInput, Prisma.DefectiveUncheckedCreateWithoutCategoryInput> | Prisma.DefectiveCreateWithoutCategoryInput[] | Prisma.DefectiveUncheckedCreateWithoutCategoryInput[];
+    connectOrCreate?: Prisma.DefectiveCreateOrConnectWithoutCategoryInput | Prisma.DefectiveCreateOrConnectWithoutCategoryInput[];
+    upsert?: Prisma.DefectiveUpsertWithWhereUniqueWithoutCategoryInput | Prisma.DefectiveUpsertWithWhereUniqueWithoutCategoryInput[];
+    createMany?: Prisma.DefectiveCreateManyCategoryInputEnvelope;
+    set?: Prisma.DefectiveWhereUniqueInput | Prisma.DefectiveWhereUniqueInput[];
+    disconnect?: Prisma.DefectiveWhereUniqueInput | Prisma.DefectiveWhereUniqueInput[];
+    delete?: Prisma.DefectiveWhereUniqueInput | Prisma.DefectiveWhereUniqueInput[];
+    connect?: Prisma.DefectiveWhereUniqueInput | Prisma.DefectiveWhereUniqueInput[];
+    update?: Prisma.DefectiveUpdateWithWhereUniqueWithoutCategoryInput | Prisma.DefectiveUpdateWithWhereUniqueWithoutCategoryInput[];
+    updateMany?: Prisma.DefectiveUpdateManyWithWhereWithoutCategoryInput | Prisma.DefectiveUpdateManyWithWhereWithoutCategoryInput[];
+    deleteMany?: Prisma.DefectiveScalarWhereInput | Prisma.DefectiveScalarWhereInput[];
+};
+export type DefectiveCreateWithoutCategoryInput = {
+    itemName: string;
+    serialNumber: string;
+    location: string;
+    issueDescription?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type DefectiveUncheckedCreateWithoutCategoryInput = {
+    id?: number;
+    itemName: string;
+    serialNumber: string;
+    location: string;
+    issueDescription?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type DefectiveCreateOrConnectWithoutCategoryInput = {
+    where: Prisma.DefectiveWhereUniqueInput;
+    create: Prisma.XOR<Prisma.DefectiveCreateWithoutCategoryInput, Prisma.DefectiveUncheckedCreateWithoutCategoryInput>;
+};
+export type DefectiveCreateManyCategoryInputEnvelope = {
+    data: Prisma.DefectiveCreateManyCategoryInput | Prisma.DefectiveCreateManyCategoryInput[];
+    skipDuplicates?: boolean;
+};
+export type DefectiveUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: Prisma.DefectiveWhereUniqueInput;
+    update: Prisma.XOR<Prisma.DefectiveUpdateWithoutCategoryInput, Prisma.DefectiveUncheckedUpdateWithoutCategoryInput>;
+    create: Prisma.XOR<Prisma.DefectiveCreateWithoutCategoryInput, Prisma.DefectiveUncheckedCreateWithoutCategoryInput>;
+};
+export type DefectiveUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: Prisma.DefectiveWhereUniqueInput;
+    data: Prisma.XOR<Prisma.DefectiveUpdateWithoutCategoryInput, Prisma.DefectiveUncheckedUpdateWithoutCategoryInput>;
+};
+export type DefectiveUpdateManyWithWhereWithoutCategoryInput = {
+    where: Prisma.DefectiveScalarWhereInput;
+    data: Prisma.XOR<Prisma.DefectiveUpdateManyMutationInput, Prisma.DefectiveUncheckedUpdateManyWithoutCategoryInput>;
+};
+export type DefectiveScalarWhereInput = {
+    AND?: Prisma.DefectiveScalarWhereInput | Prisma.DefectiveScalarWhereInput[];
+    OR?: Prisma.DefectiveScalarWhereInput[];
+    NOT?: Prisma.DefectiveScalarWhereInput | Prisma.DefectiveScalarWhereInput[];
+    id?: Prisma.IntFilter<"Defective"> | number;
+    itemName?: Prisma.StringFilter<"Defective"> | string;
+    serialNumber?: Prisma.StringFilter<"Defective"> | string;
+    location?: Prisma.StringFilter<"Defective"> | string;
+    issueDescription?: Prisma.StringNullableFilter<"Defective"> | string | null;
+    categoryId?: Prisma.IntFilter<"Defective"> | number;
+    createdAt?: Prisma.DateTimeFilter<"Defective"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"Defective"> | Date | string;
+};
+export type DefectiveCreateManyCategoryInput = {
+    id?: number;
+    itemName: string;
+    serialNumber: string;
+    location: string;
+    issueDescription?: string | null;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type DefectiveUpdateWithoutCategoryInput = {
+    itemName?: Prisma.StringFieldUpdateOperationsInput | string;
+    serialNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    location?: Prisma.StringFieldUpdateOperationsInput | string;
+    issueDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DefectiveUncheckedUpdateWithoutCategoryInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    itemName?: Prisma.StringFieldUpdateOperationsInput | string;
+    serialNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    location?: Prisma.StringFieldUpdateOperationsInput | string;
+    issueDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DefectiveUncheckedUpdateManyWithoutCategoryInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    itemName?: Prisma.StringFieldUpdateOperationsInput | string;
+    serialNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    location?: Prisma.StringFieldUpdateOperationsInput | string;
+    issueDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DefectiveSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    itemName?: boolean;
+    serialNumber?: boolean;
+    location?: boolean;
+    issueDescription?: boolean;
+    categoryId?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["defective"]>;
+export type DefectiveSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    itemName?: boolean;
+    serialNumber?: boolean;
+    location?: boolean;
+    issueDescription?: boolean;
+    categoryId?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["defective"]>;
+export type DefectiveSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    itemName?: boolean;
+    serialNumber?: boolean;
+    location?: boolean;
+    issueDescription?: boolean;
+    categoryId?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["defective"]>;
+export type DefectiveSelectScalar = {
+    id?: boolean;
+    itemName?: boolean;
+    serialNumber?: boolean;
+    location?: boolean;
+    issueDescription?: boolean;
+    categoryId?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+};
+export type DefectiveOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "itemName" | "serialNumber" | "location" | "issueDescription" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["defective"]>;
+export type DefectiveInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>;
+};
+export type DefectiveIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>;
+};
+export type DefectiveIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>;
+};
+export type $DefectivePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "Defective";
+    objects: {
+        category: Prisma.$CategoryPayload<ExtArgs>;
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: number;
+        itemName: string;
+        serialNumber: string;
+        location: string;
+        issueDescription: string | null;
+        categoryId: number;
+        createdAt: Date;
+        updatedAt: Date;
+    }, ExtArgs["result"]["defective"]>;
+    composites: {};
+};
+export type DefectiveGetPayload<S extends boolean | null | undefined | DefectiveDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$DefectivePayload, S>;
+export type DefectiveCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<DefectiveFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: DefectiveCountAggregateInputType | true;
+};
+export interface DefectiveDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['Defective'];
+        meta: {
+            name: 'Defective';
+        };
+    };
+    /**
+     * Find zero or one Defective that matches the filter.
+     * @param {DefectiveFindUniqueArgs} args - Arguments to find a Defective
+     * @example
+     * // Get one Defective
+     * const defective = await prisma.defective.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DefectiveFindUniqueArgs>(args: Prisma.SelectSubset<T, DefectiveFindUniqueArgs<ExtArgs>>): Prisma.Prisma__DefectiveClient<runtime.Types.Result.GetResult<Prisma.$DefectivePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one Defective that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DefectiveFindUniqueOrThrowArgs} args - Arguments to find a Defective
+     * @example
+     * // Get one Defective
+     * const defective = await prisma.defective.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DefectiveFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, DefectiveFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__DefectiveClient<runtime.Types.Result.GetResult<Prisma.$DefectivePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first Defective that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DefectiveFindFirstArgs} args - Arguments to find a Defective
+     * @example
+     * // Get one Defective
+     * const defective = await prisma.defective.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DefectiveFindFirstArgs>(args?: Prisma.SelectSubset<T, DefectiveFindFirstArgs<ExtArgs>>): Prisma.Prisma__DefectiveClient<runtime.Types.Result.GetResult<Prisma.$DefectivePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first Defective that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DefectiveFindFirstOrThrowArgs} args - Arguments to find a Defective
+     * @example
+     * // Get one Defective
+     * const defective = await prisma.defective.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DefectiveFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, DefectiveFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__DefectiveClient<runtime.Types.Result.GetResult<Prisma.$DefectivePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more Defectives that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DefectiveFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Defectives
+     * const defectives = await prisma.defective.findMany()
+     *
+     * // Get first 10 Defectives
+     * const defectives = await prisma.defective.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const defectiveWithIdOnly = await prisma.defective.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends DefectiveFindManyArgs>(args?: Prisma.SelectSubset<T, DefectiveFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DefectivePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a Defective.
+     * @param {DefectiveCreateArgs} args - Arguments to create a Defective.
+     * @example
+     * // Create one Defective
+     * const Defective = await prisma.defective.create({
+     *   data: {
+     *     // ... data to create a Defective
+     *   }
+     * })
+     *
+     */
+    create<T extends DefectiveCreateArgs>(args: Prisma.SelectSubset<T, DefectiveCreateArgs<ExtArgs>>): Prisma.Prisma__DefectiveClient<runtime.Types.Result.GetResult<Prisma.$DefectivePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many Defectives.
+     * @param {DefectiveCreateManyArgs} args - Arguments to create many Defectives.
+     * @example
+     * // Create many Defectives
+     * const defective = await prisma.defective.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends DefectiveCreateManyArgs>(args?: Prisma.SelectSubset<T, DefectiveCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create many Defectives and returns the data saved in the database.
+     * @param {DefectiveCreateManyAndReturnArgs} args - Arguments to create many Defectives.
+     * @example
+     * // Create many Defectives
+     * const defective = await prisma.defective.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Defectives and only return the `id`
+     * const defectiveWithIdOnly = await prisma.defective.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends DefectiveCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, DefectiveCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DefectivePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Delete a Defective.
+     * @param {DefectiveDeleteArgs} args - Arguments to delete one Defective.
+     * @example
+     * // Delete one Defective
+     * const Defective = await prisma.defective.delete({
+     *   where: {
+     *     // ... filter to delete one Defective
+     *   }
+     * })
+     *
+     */
+    delete<T extends DefectiveDeleteArgs>(args: Prisma.SelectSubset<T, DefectiveDeleteArgs<ExtArgs>>): Prisma.Prisma__DefectiveClient<runtime.Types.Result.GetResult<Prisma.$DefectivePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one Defective.
+     * @param {DefectiveUpdateArgs} args - Arguments to update one Defective.
+     * @example
+     * // Update one Defective
+     * const defective = await prisma.defective.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends DefectiveUpdateArgs>(args: Prisma.SelectSubset<T, DefectiveUpdateArgs<ExtArgs>>): Prisma.Prisma__DefectiveClient<runtime.Types.Result.GetResult<Prisma.$DefectivePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more Defectives.
+     * @param {DefectiveDeleteManyArgs} args - Arguments to filter Defectives to delete.
+     * @example
+     * // Delete a few Defectives
+     * const { count } = await prisma.defective.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends DefectiveDeleteManyArgs>(args?: Prisma.SelectSubset<T, DefectiveDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more Defectives.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DefectiveUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Defectives
+     * const defective = await prisma.defective.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends DefectiveUpdateManyArgs>(args: Prisma.SelectSubset<T, DefectiveUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more Defectives and returns the data updated in the database.
+     * @param {DefectiveUpdateManyAndReturnArgs} args - Arguments to update many Defectives.
+     * @example
+     * // Update many Defectives
+     * const defective = await prisma.defective.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Defectives and only return the `id`
+     * const defectiveWithIdOnly = await prisma.defective.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends DefectiveUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, DefectiveUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DefectivePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Create or update one Defective.
+     * @param {DefectiveUpsertArgs} args - Arguments to update or create a Defective.
+     * @example
+     * // Update or create a Defective
+     * const defective = await prisma.defective.upsert({
+     *   create: {
+     *     // ... data to create a Defective
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Defective we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DefectiveUpsertArgs>(args: Prisma.SelectSubset<T, DefectiveUpsertArgs<ExtArgs>>): Prisma.Prisma__DefectiveClient<runtime.Types.Result.GetResult<Prisma.$DefectivePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of Defectives.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DefectiveCountArgs} args - Arguments to filter Defectives to count.
+     * @example
+     * // Count the number of Defectives
+     * const count = await prisma.defective.count({
+     *   where: {
+     *     // ... the filter for the Defectives we want to count
+     *   }
+     * })
+    **/
+    count<T extends DefectiveCountArgs>(args?: Prisma.Subset<T, DefectiveCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], DefectiveCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a Defective.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DefectiveAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DefectiveAggregateArgs>(args: Prisma.Subset<T, DefectiveAggregateArgs>): Prisma.PrismaPromise<GetDefectiveAggregateType<T>>;
+    /**
+     * Group by Defective.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DefectiveGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends DefectiveGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: DefectiveGroupByArgs['orderBy'];
+    } : {
+        orderBy?: DefectiveGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, DefectiveGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDefectiveGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the Defective model
+     */
+    readonly fields: DefectiveFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for Defective.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__DefectiveClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    category<T extends Prisma.CategoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CategoryDefaultArgs<ExtArgs>>): Prisma.Prisma__CategoryClient<runtime.Types.Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the Defective model
+ */
+export interface DefectiveFieldRefs {
+    readonly id: Prisma.FieldRef<"Defective", 'Int'>;
+    readonly itemName: Prisma.FieldRef<"Defective", 'String'>;
+    readonly serialNumber: Prisma.FieldRef<"Defective", 'String'>;
+    readonly location: Prisma.FieldRef<"Defective", 'String'>;
+    readonly issueDescription: Prisma.FieldRef<"Defective", 'String'>;
+    readonly categoryId: Prisma.FieldRef<"Defective", 'Int'>;
+    readonly createdAt: Prisma.FieldRef<"Defective", 'DateTime'>;
+    readonly updatedAt: Prisma.FieldRef<"Defective", 'DateTime'>;
+}
+/**
+ * Defective findUnique
+ */
+export type DefectiveFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Defective
+     */
+    select?: Prisma.DefectiveSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Defective
+     */
+    omit?: Prisma.DefectiveOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DefectiveInclude<ExtArgs> | null;
+    /**
+     * Filter, which Defective to fetch.
+     */
+    where: Prisma.DefectiveWhereUniqueInput;
+};
+/**
+ * Defective findUniqueOrThrow
+ */
+export type DefectiveFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Defective
+     */
+    select?: Prisma.DefectiveSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Defective
+     */
+    omit?: Prisma.DefectiveOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DefectiveInclude<ExtArgs> | null;
+    /**
+     * Filter, which Defective to fetch.
+     */
+    where: Prisma.DefectiveWhereUniqueInput;
+};
+/**
+ * Defective findFirst
+ */
+export type DefectiveFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Defective
+     */
+    select?: Prisma.DefectiveSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Defective
+     */
+    omit?: Prisma.DefectiveOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DefectiveInclude<ExtArgs> | null;
+    /**
+     * Filter, which Defective to fetch.
+     */
+    where?: Prisma.DefectiveWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Defectives to fetch.
+     */
+    orderBy?: Prisma.DefectiveOrderByWithRelationInput | Prisma.DefectiveOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Defectives.
+     */
+    cursor?: Prisma.DefectiveWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Defectives from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Defectives.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Defectives.
+     */
+    distinct?: Prisma.DefectiveScalarFieldEnum | Prisma.DefectiveScalarFieldEnum[];
+};
+/**
+ * Defective findFirstOrThrow
+ */
+export type DefectiveFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Defective
+     */
+    select?: Prisma.DefectiveSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Defective
+     */
+    omit?: Prisma.DefectiveOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DefectiveInclude<ExtArgs> | null;
+    /**
+     * Filter, which Defective to fetch.
+     */
+    where?: Prisma.DefectiveWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Defectives to fetch.
+     */
+    orderBy?: Prisma.DefectiveOrderByWithRelationInput | Prisma.DefectiveOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Defectives.
+     */
+    cursor?: Prisma.DefectiveWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Defectives from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Defectives.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Defectives.
+     */
+    distinct?: Prisma.DefectiveScalarFieldEnum | Prisma.DefectiveScalarFieldEnum[];
+};
+/**
+ * Defective findMany
+ */
+export type DefectiveFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Defective
+     */
+    select?: Prisma.DefectiveSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Defective
+     */
+    omit?: Prisma.DefectiveOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DefectiveInclude<ExtArgs> | null;
+    /**
+     * Filter, which Defectives to fetch.
+     */
+    where?: Prisma.DefectiveWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Defectives to fetch.
+     */
+    orderBy?: Prisma.DefectiveOrderByWithRelationInput | Prisma.DefectiveOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing Defectives.
+     */
+    cursor?: Prisma.DefectiveWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Defectives from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Defectives.
+     */
+    skip?: number;
+    distinct?: Prisma.DefectiveScalarFieldEnum | Prisma.DefectiveScalarFieldEnum[];
+};
+/**
+ * Defective create
+ */
+export type DefectiveCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Defective
+     */
+    select?: Prisma.DefectiveSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Defective
+     */
+    omit?: Prisma.DefectiveOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DefectiveInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a Defective.
+     */
+    data: Prisma.XOR<Prisma.DefectiveCreateInput, Prisma.DefectiveUncheckedCreateInput>;
+};
+/**
+ * Defective createMany
+ */
+export type DefectiveCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Defectives.
+     */
+    data: Prisma.DefectiveCreateManyInput | Prisma.DefectiveCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * Defective createManyAndReturn
+ */
+export type DefectiveCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Defective
+     */
+    select?: Prisma.DefectiveSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Defective
+     */
+    omit?: Prisma.DefectiveOmit<ExtArgs> | null;
+    /**
+     * The data used to create many Defectives.
+     */
+    data: Prisma.DefectiveCreateManyInput | Prisma.DefectiveCreateManyInput[];
+    skipDuplicates?: boolean;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DefectiveIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * Defective update
+ */
+export type DefectiveUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Defective
+     */
+    select?: Prisma.DefectiveSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Defective
+     */
+    omit?: Prisma.DefectiveOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DefectiveInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a Defective.
+     */
+    data: Prisma.XOR<Prisma.DefectiveUpdateInput, Prisma.DefectiveUncheckedUpdateInput>;
+    /**
+     * Choose, which Defective to update.
+     */
+    where: Prisma.DefectiveWhereUniqueInput;
+};
+/**
+ * Defective updateMany
+ */
+export type DefectiveUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Defectives.
+     */
+    data: Prisma.XOR<Prisma.DefectiveUpdateManyMutationInput, Prisma.DefectiveUncheckedUpdateManyInput>;
+    /**
+     * Filter which Defectives to update
+     */
+    where?: Prisma.DefectiveWhereInput;
+    /**
+     * Limit how many Defectives to update.
+     */
+    limit?: number;
+};
+/**
+ * Defective updateManyAndReturn
+ */
+export type DefectiveUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Defective
+     */
+    select?: Prisma.DefectiveSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Defective
+     */
+    omit?: Prisma.DefectiveOmit<ExtArgs> | null;
+    /**
+     * The data used to update Defectives.
+     */
+    data: Prisma.XOR<Prisma.DefectiveUpdateManyMutationInput, Prisma.DefectiveUncheckedUpdateManyInput>;
+    /**
+     * Filter which Defectives to update
+     */
+    where?: Prisma.DefectiveWhereInput;
+    /**
+     * Limit how many Defectives to update.
+     */
+    limit?: number;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DefectiveIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * Defective upsert
+ */
+export type DefectiveUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Defective
+     */
+    select?: Prisma.DefectiveSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Defective
+     */
+    omit?: Prisma.DefectiveOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DefectiveInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the Defective to update in case it exists.
+     */
+    where: Prisma.DefectiveWhereUniqueInput;
+    /**
+     * In case the Defective found by the `where` argument doesn't exist, create a new Defective with this data.
+     */
+    create: Prisma.XOR<Prisma.DefectiveCreateInput, Prisma.DefectiveUncheckedCreateInput>;
+    /**
+     * In case the Defective was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.DefectiveUpdateInput, Prisma.DefectiveUncheckedUpdateInput>;
+};
+/**
+ * Defective delete
+ */
+export type DefectiveDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Defective
+     */
+    select?: Prisma.DefectiveSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Defective
+     */
+    omit?: Prisma.DefectiveOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DefectiveInclude<ExtArgs> | null;
+    /**
+     * Filter which Defective to delete.
+     */
+    where: Prisma.DefectiveWhereUniqueInput;
+};
+/**
+ * Defective deleteMany
+ */
+export type DefectiveDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which Defectives to delete
+     */
+    where?: Prisma.DefectiveWhereInput;
+    /**
+     * Limit how many Defectives to delete.
+     */
+    limit?: number;
+};
+/**
+ * Defective without action
+ */
+export type DefectiveDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Defective
+     */
+    select?: Prisma.DefectiveSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Defective
+     */
+    omit?: Prisma.DefectiveOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DefectiveInclude<ExtArgs> | null;
+};
+export {};
+//# sourceMappingURL=Defective.d.ts.map

@@ -1,11 +1,17 @@
 {
   "compilerOptions": {
     "strict": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
     "paths": {
       "@schema/*": ["./src/schema/*"],
       "@lib/*": ["./src/lib/*"],
       "@config/*": ["./src/config/*"],
       "@prisma/*": ["./prisma/*"]
     }
-  }
+  },
+  "include": ["src/**/*"]
 }
