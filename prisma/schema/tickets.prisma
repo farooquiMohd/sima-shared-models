@@ -1,0 +1,15 @@
+model Ticket {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String?
+  status      TicketStatus @default(OPEN)
+  priority    Priority     @default(MEDIUM)
+
+  customerId  Int
+  customer    Customer     @relation(fields: [customerId], references: [id])
+
+  assigneeId  Int          // userId (can be related later)
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}

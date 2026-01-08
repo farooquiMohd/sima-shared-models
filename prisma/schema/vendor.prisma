@@ -1,0 +1,23 @@
+enum VendorStatus {
+    ACTIVE
+    INACTIVE
+    SUSPENDED
+}
+
+model Vendor {
+    id             Int     @id @default(autoincrement())
+    vendor_name    String
+    category_id    Int
+    contact_number String?
+    email_address  String?
+    address        String?
+    gst_number     String?
+    pan_number     String?
+
+    category Category @relation(fields: [category_id], references: [id])
+
+    created_at DateTime @default(now())
+    updated_at DateTime @updatedAt
+
+    assets Asset[]
+}

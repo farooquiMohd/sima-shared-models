@@ -1,0 +1,23 @@
+model MCC {
+    id      Int    @id @default(autoincrement())
+    mccName String
+    mccCode String @unique
+    status  Status @default(ACTIVE)
+
+    stateId    Int
+    districtId Int
+    tehsilId   Int
+    villageId  Int
+
+    state    State    @relation(fields: [stateId], references: [id])
+    district District @relation(fields: [districtId], references: [id])
+    tehsil   Tehsil   @relation(fields: [tehsilId], references: [id])
+    village  Village  @relation(fields: [villageId], references: [id])
+
+    mpps MPP[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([stateId, districtId, tehsilId, villageId])
+}

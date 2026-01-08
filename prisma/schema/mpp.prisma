@@ -1,0 +1,26 @@
+model MPP {
+    id        Int    @id @default(autoincrement())
+    mppName   String
+    mppCode   String @unique
+    latitude  String
+    longitude String
+    status    Status @default(ACTIVE)
+
+    mccId      Int
+    stateId    Int
+    districtId Int
+    tehsilId   Int
+    villageId  Int
+
+    mcc      MCC      @relation(fields: [mccId], references: [id])
+    state    State    @relation(fields: [stateId], references: [id])
+    district District @relation(fields: [districtId], references: [id])
+    tehsil   Tehsil   @relation(fields: [tehsilId], references: [id])
+    village  Village  @relation(fields: [villageId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([mccId])
+    @@index([stateId, districtId, tehsilId, villageId])
+}

@@ -1,0 +1,12 @@
+model Issue {
+    id          Int     @id @default(autoincrement())
+    title       String
+    severity    String
+    description String?
+
+    categoryId Int
+    category   Category @relation(fields: [categoryId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}

@@ -1,0 +1,65 @@
+enum PhysicalStatus {
+    NEW
+    GOOD
+    UNDER_MAINTENANCE
+    DAMAGED
+    RETIRED
+    OLD
+}
+
+enum MaintenanceType {
+    NONE
+    MONTHLY
+    QUARTLY
+    YEARLY
+    HALF_YEARLY
+}
+
+model Asset {
+    id Int @id @default(autoincrement())
+
+    assetName        String
+    assetCode        String  @unique
+    assetDescription String?
+
+    make   String?
+    fileId Int?
+
+    acquisitionDate DateTime
+    retireDate      DateTime?
+
+    depreciationRate String?
+
+    voucherDate   DateTime?
+    voucherNumber String?
+
+    invoiceDate   DateTime?
+    invoiceNumber String?
+
+    poDate   DateTime?
+    poNumber String?
+
+    physicalStatus          PhysicalStatus  @default(GOOD)
+    calibration_maintenance MaintenanceType @default(NONE)
+    preventive_maintenance  MaintenanceType @default(NONE)
+
+    /**
+     * Relations
+     */
+    categoryId    Int
+    subCategoryId Int
+    vendorId      Int
+
+    category    Category    @relation(fields: [categoryId], references: [id])
+    subCategory SubCategory @relation(fields: [subCategoryId], references: [id])
+    vendor      Vendor      @relation(fields: [vendorId], references: [id])
+    asset_image File?       @relation(fields: [fileId], references: [id])
+
+    status Status @default(ACTIVE)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([categoryId, subCategoryId])
+    @@index([vendorId])
+}

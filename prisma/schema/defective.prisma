@@ -1,0 +1,13 @@
+model Defective {
+    id               Int     @id @default(autoincrement())
+    itemName         String
+    serialNumber     String
+    location         String
+    issueDescription String?
+
+    categoryId Int
+    category   Category @relation(fields: [categoryId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}

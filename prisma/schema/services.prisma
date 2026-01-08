@@ -1,0 +1,11 @@
+model Service {
+    id              Int     @id @default(autoincrement())
+    serviceName     String
+    description     String?
+    price           Int
+    duration        String // in minutes
+    serviceCategory String
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}

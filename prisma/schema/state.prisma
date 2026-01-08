@@ -1,0 +1,14 @@
+model State {
+    id     Int     @id @default(autoincrement())
+    name   String  @unique
+    code   String? // optional (e.g., MH, UP)
+    status Status  @default(ACTIVE)
+
+    districts District[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    mpps MPP[]
+    mccs MCC[]
+}
