@@ -21,7 +21,6 @@ import * as mpp from './mpp';
 import * as request from './request';
 import * as service from './services';
 import * as ticket from './tickets';
-import * as enums from './enums';
 
 export * from './user';
 export * from './mail';
@@ -50,7 +49,6 @@ export * from './mpp';
 export * from './request';
 export * from './services';
 export * from './tickets';
-export * from './enums';
 
 export const allModels = {
   ...user,
@@ -76,5 +74,4 @@ export const allModels = {
   ...request,
   ...service,
   ...ticket,
-  ...enums,
 };

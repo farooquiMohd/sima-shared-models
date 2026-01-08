@@ -1,7 +1,6 @@
 # sima-shared-models
 
-This is a shared library containing the Prisma database connection and Zod
-schemas for the project microservices.
+This is a shared library containing the Prisma database connection and Zod schemas for the project microservices.
 
 ## Dependencies
 
@@ -14,7 +13,8 @@ schemas for the project microservices.
    ```sh
    bun install
    ```
-2. **Setup Environment**: Ensure you have a `.env` file with `DATABASE_URL`.
+2. **Setup Environment**:
+   Ensure you have a `.env` file with `DATABASE_URL`.
    ```sh
    DATABASE_URL="postgresql://user:password@localhost:5432/mydb"
    ```
@@ -25,8 +25,7 @@ schemas for the project microservices.
 
 ## Usage in Other Services
 
-To use this package in another service (e.g., specific microservice), you can
-install it relative to its path or strictly as a workspace dependency.
+To use this package in another service (e.g., specific microservice), you can install it relative to its path or strictly as a workspace dependency.
 
 ### Method 1: Local Path Installation (Recommended for Monorepos/Local Dev)
 
@@ -35,18 +34,17 @@ In your consuming service directory:
 ```sh
 bun add "file:../path/to/sima-shared-models"
 ```
-
-_Replace `../path/to/sima-shared-models` with the actual relative path._
+*Replace `../path/to/sima-shared-models` with the actual relative path.*
 
 ### Method 2: Bun Link
 
-1. In this sima-shared-models` directory:
+1. In this `sima-shared-models` directory:
    ```sh
    bun link
    ```
 2. In your consuming service directory:
    ```sh
-   bun link erp-shared-models
+   bun link sima-shared-models
    ```
 
 ### Importing
@@ -54,7 +52,7 @@ _Replace `../path/to/sima-shared-models` with the actual relative path._
 Once installed, you can import the Prisma client and schemas:
 
 ```typescript
-import { prisma, userRegisterSchema } from 'sima-shared-models';
+import { prisma, userRegisterSchema } from "sima-shared-models"; 
 
 // Use Prisma
 const user = await prisma.user.findFirst();
@@ -66,7 +64,7 @@ const result = userRegisterSchema.safeParse(inputData);
 ## Available Scripts
 
 - `bun db:generate`: Regenerate the Prisma client.
-- `bun db:migrate:dev`: Run migrations (use this carefully from a central
-  place).
+- `bun db:migrate:dev`: Run migrations (use this carefully from a central place).
 - `bun db:push`: Push schema changes to DB without history.
 - `bun db:studio`: Open Prisma Studio.
+
