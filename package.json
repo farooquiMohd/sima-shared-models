@@ -1,9 +1,7 @@
 {
   "name": "sima-shared-models",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
   "scripts": {
-    "build": "tsc",
     "db:migrate:dev": "bunx --bun prisma migrate dev && bunx --bun prisma generate",
     "db:migrate:dev:name": "bunx --bun prisma migrate dev --name init && bunx --bun prisma generate",
     "db:generate": "bunx --bun prisma generate",

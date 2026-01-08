@@ -22,6 +22,7 @@ export * from './schema/services';
 export * from './schema/subcategory';
 export * from './schema/asset';
 export * from './schema/tickets'; // Added
+export * from './schema/enums';
 export { allModels } from './schema';
 export * from './lib/tools';
 export * from './lib/env';
