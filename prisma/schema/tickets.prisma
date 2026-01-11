@@ -5,11 +5,12 @@ model Ticket {
   status      TicketStatus @default(OPEN)
   priority    Priority     @default(MEDIUM)
 
-  customerId  Int
-  customer    Customer     @relation(fields: [customerId], references: [id])
+  customerId Int
+  customer   Customer @relation(fields: [customerId], references: [id])
 
-  assigneeId  Int          // userId (can be related later)
+  assigneeId Int // userId (can be related later)
+  assignee   User @relation(fields: [assigneeId], references: [id])
 
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
