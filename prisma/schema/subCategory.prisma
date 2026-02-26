@@ -13,4 +13,6 @@ model SubCategory {
     updatedAt DateTime @updatedAt
 
     assets Asset[]
+
+    @@map("sub_categories")
 }

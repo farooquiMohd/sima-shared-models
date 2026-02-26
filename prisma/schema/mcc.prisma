@@ -20,4 +20,5 @@ model MCC {
     updatedAt DateTime @updatedAt
 
     @@index([stateId, districtId, tehsilId, villageId])
+    @@map("mccs")
 }

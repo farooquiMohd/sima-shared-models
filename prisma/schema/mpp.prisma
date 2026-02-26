@@ -23,4 +23,5 @@ model MPP {
 
     @@index([mccId])
     @@index([stateId, districtId, tehsilId, villageId])
+    @@map("mpps")
 }

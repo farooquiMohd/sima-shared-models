@@ -11,4 +11,6 @@ model State {
 
     mpps MPP[]
     mccs MCC[]
+
+    @@map("states")
 }

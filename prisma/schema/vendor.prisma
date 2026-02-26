@@ -20,4 +20,6 @@ model Vendor {
     updated_at DateTime @updatedAt
 
     assets Asset[]
+
+    @@map("vendors")
 }

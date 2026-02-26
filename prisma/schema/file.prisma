@@ -12,4 +12,6 @@ model File {
     users         User[]
     assets        Asset[]
     subCategories SubCategory[]
+
+    @@map("files")
 }

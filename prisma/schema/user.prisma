@@ -15,4 +15,6 @@ model User {
     provider          Provider @default(credentials)
 
     tickets Ticket[]
+
+    @@map("users")
 }

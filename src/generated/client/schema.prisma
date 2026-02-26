@@ -1,0 +1,465 @@
+enum PhysicalStatus {
+  NEW
+  GOOD
+  UNDER_MAINTENANCE
+  DAMAGED
+  RETIRED
+  OLD
+}
+
+enum MaintenanceType {
+  NONE
+  MONTHLY
+  QUARTLY
+  YEARLY
+  HALF_YEARLY
+}
+
+model Asset {
+  id Int @id @default(autoincrement())
+
+  assetName        String
+  assetCode        String  @unique
+  assetDescription String?
+
+  make   String?
+  fileId Int?
+
+  acquisitionDate DateTime
+  retireDate      DateTime?
+
+  depreciationRate String?
+
+  voucherDate   DateTime?
+  voucherNumber String?
+
+  invoiceDate   DateTime?
+  invoiceNumber String?
+
+  poDate   DateTime?
+  poNumber String?
+
+  physicalStatus          PhysicalStatus  @default(GOOD)
+  calibration_maintenance MaintenanceType @default(NONE)
+  preventive_maintenance  MaintenanceType @default(NONE)
+
+  /**
+   * Relations
+   */
+  categoryId    Int
+  subCategoryId Int
+  vendorId      Int
+
+  category    Category    @relation(fields: [categoryId], references: [id])
+  subCategory SubCategory @relation(fields: [subCategoryId], references: [id])
+  vendor      Vendor      @relation(fields: [vendorId], references: [id])
+  asset_image File?       @relation(fields: [fileId], references: [id])
+
+  status Status @default(ACTIVE)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([categoryId, subCategoryId])
+  @@index([vendorId])
+  @@map("assets")
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
+}
+
+enum TicketStatus {
+  OPEN
+  INPROGRESS
+  PENDING
+  RESOLVED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+model Category {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  status      Status   @default(ACTIVE)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  subcategories SubCategory[]
+  vendors       Vendor[]
+  issues        Issue[]
+  defectives    Defective[]
+
+  assets Asset[]
+
+  @@map("categories")
+}
+
+model Customer {
+  id          Int     @id @default(autoincrement())
+  companyName String
+  email       String  @unique
+  phoneNumber String
+  status      Status  @default(ACTIVE)
+  industry    String?
+  address     String?
+
+  tickets Ticket[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("customers")
+}
+
+model Defective {
+  id               Int     @id @default(autoincrement())
+  itemName         String
+  serialNumber     String
+  location         String
+  issueDescription String?
+
+  categoryId Int
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("defectives")
+}
+
+model District {
+  id     Int    @id @default(autoincrement())
+  name   String
+  status Status @default(ACTIVE)
+
+  stateId Int
+  state   State @relation(fields: [stateId], references: [id])
+
+  tehsils Tehsil[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  mpps      MPP[]
+  mccs      MCC[]
+
+  @@unique([name, stateId])
+  @@map("districts")
+}
+
+model File {
+  id           Int      @id @default(autoincrement())
+  filename     String
+  originalName String
+  mimeType     String
+  size         Int
+  filePath     String
+  fileContent  Bytes
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  users         User[]
+  assets        Asset[]
+  subCategories SubCategory[]
+
+  @@map("files")
+}
+
+model Issue {
+  id          Int     @id @default(autoincrement())
+  title       String
+  severity    String
+  description String?
+
+  categoryId Int
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("issues")
+}
+
+model MCC {
+  id      Int    @id @default(autoincrement())
+  mccName String
+  mccCode String @unique
+  status  Status @default(ACTIVE)
+
+  stateId    Int
+  districtId Int
+  tehsilId   Int
+  villageId  Int
+
+  state    State    @relation(fields: [stateId], references: [id])
+  district District @relation(fields: [districtId], references: [id])
+  tehsil   Tehsil   @relation(fields: [tehsilId], references: [id])
+  village  Village  @relation(fields: [villageId], references: [id])
+
+  mpps MPP[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([stateId, districtId, tehsilId, villageId])
+  @@map("mccs")
+}
+
+model Module {
+  id          Int          @id @default(autoincrement())
+  Name        String
+  description String?
+  permissions Permission[] @relation("PermissionModules")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("modules")
+}
+
+model MPP {
+  id        Int    @id @default(autoincrement())
+  mppName   String
+  mppCode   String @unique
+  latitude  String
+  longitude String
+  status    Status @default(ACTIVE)
+
+  mccId      Int
+  stateId    Int
+  districtId Int
+  tehsilId   Int
+  villageId  Int
+
+  mcc      MCC      @relation(fields: [mccId], references: [id])
+  state    State    @relation(fields: [stateId], references: [id])
+  district District @relation(fields: [districtId], references: [id])
+  tehsil   Tehsil   @relation(fields: [tehsilId], references: [id])
+  village  Village  @relation(fields: [villageId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([mccId])
+  @@index([stateId, districtId, tehsilId, villageId])
+  @@map("mpps")
+}
+
+model Permission {
+  id      Int      @id @default(autoincrement())
+  action  String[]
+  modules Module[] @relation("PermissionModules")
+  roles   Role[]   @relation("RolePermissions")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("permissions")
+}
+
+model Request {
+  id          Int     @id @default(autoincrement())
+  title       String
+  department  String
+  type        String
+  description String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("requests")
+}
+
+model Role {
+  id          Int     @id @default(autoincrement())
+  name        String  @unique
+  description String?
+  users       User[]
+
+  permissions Permission[] @relation("RolePermissions")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("roles")
+}
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// mcxc
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../src/generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Provider {
+  credentials
+  google
+}
+
+model Service {
+  id              Int     @id @default(autoincrement())
+  serviceName     String
+  description     String?
+  price           Int
+  duration        String // in minutes
+  serviceCategory String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("services")
+}
+
+model State {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  code   String? // optional (e.g., MH, UP)
+  status Status  @default(ACTIVE)
+
+  districts District[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  mpps MPP[]
+  mccs MCC[]
+
+  @@map("states")
+}
+
+model SubCategory {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+  fileId      Int?
+
+  categoryId Int
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  file File? @relation(fields: [fileId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  assets Asset[]
+
+  @@map("sub_categories")
+}
+
+model Tehsil {
+  id     Int    @id @default(autoincrement())
+  name   String
+  status Status @default(ACTIVE)
+
+  districtId Int
+  district   District @relation(fields: [districtId], references: [id])
+
+  villages Village[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  mpps      MPP[]
+  mccs      MCC[]
+
+  @@unique([name, districtId])
+  @@map("tehsils")
+}
+
+model Ticket {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String?
+  status      TicketStatus @default(OPEN)
+  priority    Priority     @default(MEDIUM)
+
+  customerId Int
+  customer   Customer @relation(fields: [customerId], references: [id])
+
+  assigneeId Int // userId (can be related later)
+  assignee   User @relation(fields: [assigneeId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("tickets")
+}
+
+model User {
+  id                Int      @id @default(autoincrement())
+  name              String
+  email             String   @unique
+  emailVerified     Boolean  @default(false)
+  password          String
+  fileId            Int?
+  profileImage      File?    @relation(fields: [fileId], references: [id])
+  original_password String?
+  mobileNumber      String?
+  roleId            Int?
+  role              Role?    @relation(fields: [roleId], references: [id])
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  provider          Provider @default(credentials)
+
+  tickets Ticket[]
+
+  @@map("users")
+}
+
+enum VendorStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+model Vendor {
+  id             Int     @id @default(autoincrement())
+  vendor_name    String
+  category_id    Int
+  contact_number String?
+  email_address  String?
+  address        String?
+  gst_number     String?
+  pan_number     String?
+
+  category Category @relation(fields: [category_id], references: [id])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  assets Asset[]
+
+  @@map("vendors")
+}
+
+model Village {
+  id      Int     @id @default(autoincrement())
+  name    String
+  pincode String?
+  status  Status  @default(ACTIVE)
+
+  tehsilId Int
+  tehsil   Tehsil @relation(fields: [tehsilId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  mpps      MPP[]
+  mccs      MCC[]
+
+  @@unique([name, tehsilId])
+  @@map("villages")
+}

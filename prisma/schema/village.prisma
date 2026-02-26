@@ -13,4 +13,5 @@ model Village {
     mccs      MCC[]
 
     @@unique([name, tehsilId])
+    @@map("villages")
 }

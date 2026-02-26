@@ -31,4 +31,6 @@ model Category {
     defectives    Defective[]
 
     assets Asset[]
+
+    @@map("categories")
 }
